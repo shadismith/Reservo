@@ -1,5 +1,9 @@
 package de.reservo.dao;
 
-public interface NotificationDAO {
+import org.springframework.data.repository.CrudRepository;
+
+import de.reservo.pao.NotificationPAO;
+
+public interface NotificationDAO extends CrudRepository<NotificationPAO, Long> {
 
 }

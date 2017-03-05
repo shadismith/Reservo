@@ -1,5 +1,9 @@
 package de.reservo.dao;
 
-public interface ClientDAO {
+import org.springframework.data.repository.CrudRepository;
+
+import de.reservo.pao.ClientPAO;
+
+public interface ClientDAO extends CrudRepository<ClientPAO, Long> {
 
 }

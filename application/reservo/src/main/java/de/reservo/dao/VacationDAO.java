@@ -1,5 +1,9 @@
 package de.reservo.dao;
 
-public interface VacationDAO {
+import org.springframework.data.repository.CrudRepository;
+
+import de.reservo.pao.VacationPAO;
+
+public interface VacationDAO extends CrudRepository<VacationPAO, Long>{
 
 }

@@ -1,5 +1,9 @@
 package de.reservo.dao;
 
-public interface EmployeeDAO {
+import org.springframework.data.repository.CrudRepository;
+
+import de.reservo.pao.EmployeePAO;
+
+public interface EmployeeDAO extends CrudRepository<EmployeePAO, Long> {
 
 }

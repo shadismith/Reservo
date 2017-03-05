@@ -1,5 +1,9 @@
 package de.reservo.dao;
 
-public interface AppointmentDAO {
+import org.springframework.data.repository.CrudRepository;
+
+import de.reservo.pao.AppointmentPAO;
+
+public interface AppointmentDAO extends CrudRepository<AppointmentPAO, Long> {
 
 }

@@ -1,5 +1,9 @@
 package de.reservo.dao;
 
-public interface OpeningTimeDAO {
+import org.springframework.data.repository.CrudRepository;
+
+import de.reservo.pao.OpeningTimePAO;
+
+public interface OpeningTimeDAO extends CrudRepository<OpeningTimePAO, Long> {
 
 }

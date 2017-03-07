@@ -22,8 +22,8 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
 		destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
-		p:url="jdbc:mysql://localhost/reservo" p:username="reservo"
-		p:password="reservo" lazy-init="false" />
+		p:url="jdbc:mysql://localhost/reservo?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"
+		p:username="reservo" p:password="reservo" lazy-init="false" />
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"

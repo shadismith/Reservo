@@ -1,5 +1,7 @@
 package de.reservo.enums;
 
-public interface OpeningTimeType {
+public enum OpeningTimeType {
 
+	FIX, VARIABLE
+	
 }

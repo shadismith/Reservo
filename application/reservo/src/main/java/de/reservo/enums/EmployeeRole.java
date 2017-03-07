@@ -1,5 +1,7 @@
 package de.reservo.enums;
 
-public interface EmployeeRole {
+public enum EmployeeRole {
 
+	MANAGER, TRUSTEE, EMPLOYEE
+	
 }

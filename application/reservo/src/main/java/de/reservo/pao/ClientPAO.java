@@ -1,10 +1,13 @@
 package de.reservo.pao;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -14,7 +17,8 @@ import javax.persistence.TemporalType;
 public class ClientPAO {
 
 	@Id
-	@Column(unique = true, updatable = false, nullable = false, insertable = false)
+	@GeneratedValue
+	@Column(unique = true, updatable = false, nullable = false)
 	private Long clientId;
 	@Column(unique = false, updatable = true, nullable = false)
 	private String firstName;
@@ -28,6 +32,10 @@ public class ClientPAO {
 	@Column(unique = false, updatable = true, nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date bannedAt;
+	@OneToMany(mappedBy = "appointmentId")
+	private Set<AppointmentPAO> appointments;
+	@OneToMany(mappedBy = "notificationId")
+	private Set<NotificationPAO> notifications;
 
 	public Long getClientId() {
 		return clientId;
@@ -75,6 +83,22 @@ public class ClientPAO {
 
 	public void setBannedAt(Date bannedAt) {
 		this.bannedAt = bannedAt;
+	}
+
+	public Set<AppointmentPAO> getAppointments() {
+		return appointments;
+	}
+
+	public void setAppointments(Set<AppointmentPAO> appointments) {
+		this.appointments = appointments;
+	}
+
+	public Set<NotificationPAO> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(Set<NotificationPAO> notifications) {
+		this.notifications = notifications;
 	}
 
 }

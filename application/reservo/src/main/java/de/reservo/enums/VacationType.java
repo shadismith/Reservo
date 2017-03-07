@@ -1,5 +1,7 @@
 package de.reservo.enums;
 
-public interface VacationType {
+public enum VacationType {
 
+	SICK, VACATION, SPVACATION
+	
 }

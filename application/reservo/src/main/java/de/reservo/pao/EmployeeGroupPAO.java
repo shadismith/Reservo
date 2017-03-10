@@ -2,6 +2,7 @@ package de.reservo.pao;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,10 +25,10 @@ public class EmployeeGroupPAO {
 	private ServiceProviderPAO serviceProvider;
 	@Column(updatable = true, nullable = false, unique = false)
 	private String name;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "SERVICE_EMPLOYEEGROUP", joinColumns = @JoinColumn(name = "groupId", referencedColumnName = "groupId"), inverseJoinColumns = @JoinColumn(name = "serviceId", referencedColumnName = "serviceId"))
 	private Set<ServicePAO> services;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "GROUP_EMPLOYEEGROUP", joinColumns = @JoinColumn(name = "groupId", referencedColumnName = "groupId"), inverseJoinColumns = @JoinColumn(name = "employeeId", referencedColumnName = "employeeId"))
 	private Set<EmployeePAO> employees;
 

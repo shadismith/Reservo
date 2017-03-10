@@ -3,6 +3,7 @@ package de.reservo.pao;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,7 +49,7 @@ public class AppointmentPAO {
 	private AppointmentState state;
 	@OneToMany(mappedBy = "notificationId")
 	private Set<NotificationPAO> notifications;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "APPOINTMENT_SERVICE", joinColumns = @JoinColumn(name = "appointmentId", referencedColumnName = "appointmentId"), inverseJoinColumns = @JoinColumn(name = "serviceId", referencedColumnName = "serviceId"))
 	private Set<ServicePAO> services;
 

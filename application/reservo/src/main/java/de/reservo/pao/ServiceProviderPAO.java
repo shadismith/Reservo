@@ -38,6 +38,8 @@ public class ServiceProviderPAO {
 	private Set<ServicePAO> services;
 	@OneToMany(mappedBy = "appointmentId", cascade = CascadeType.ALL)
 	private Set<AppointmentPAO> appointments;
+	@OneToMany(mappedBy = "blockEntryId")
+	private Set<BlockEntryPAO> blockEntries;
 
 	public Long getServiceProviderId() {
 		return serviceProviderId;
@@ -125,6 +127,14 @@ public class ServiceProviderPAO {
 
 	public void setAppointments(Set<AppointmentPAO> appointments) {
 		this.appointments = appointments;
+	}
+
+	public Set<BlockEntryPAO> getBlockEntries() {
+		return blockEntries;
+	}
+
+	public void setBlockEntries(Set<BlockEntryPAO> blockEntries) {
+		this.blockEntries = blockEntries;
 	}
 
 }

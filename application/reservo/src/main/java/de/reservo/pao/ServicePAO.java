@@ -1,12 +1,14 @@
 package de.reservo.pao;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -26,6 +28,10 @@ public class ServicePAO {
 	private BigDecimal price;
 	@Column(nullable = false, unique = false, updatable = true)
 	private String currency;
+	// @ManyToMany(mappedBy = "services")
+	// private Set<AppointmentPAO> appointments;
+	@ManyToMany(mappedBy = "services")
+	private Set<EmployeeGroupPAO> employeeGroups;
 
 	public Long getServiceId() {
 		return serviceId;
@@ -65,6 +71,14 @@ public class ServicePAO {
 
 	public void setCurrency(String currency) {
 		this.currency = currency;
+	}
+
+	public Set<EmployeeGroupPAO> getEmployeeGroups() {
+		return employeeGroups;
+	}
+
+	public void setEmployeeGroups(Set<EmployeeGroupPAO> employeeGroups) {
+		this.employeeGroups = employeeGroups;
 	}
 
 }

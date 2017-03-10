@@ -33,7 +33,7 @@ public class AppointmentPAO {
 	@ManyToOne
 	private EmployeePAO employee;
 	@Column(nullable = true, updatable = true, unique = false)
-	private String customerName;
+	private String customerInfo;
 	@Column(nullable = false, updatable = true, unique = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date startsAt;
@@ -46,6 +46,9 @@ public class AppointmentPAO {
 	private AppointmentState state;
 	@OneToMany(mappedBy = "notificationId")
 	private Set<NotificationPAO> notifications;
+//	@ManyToMany
+//	@JoinTable(joinColumns = @JoinColumn(name = "appointmentId", referencedColumnName = "appointmentId", nullable = false, unique = false, updatable = false), inverseJoinColumns = @JoinColumn(name = "serviceProviderId", referencedColumnName = "serviceProviderId", nullable = false, unique = false, updatable = true))
+//	private List<ServicePAO> services;
 
 	public Long getAppointmentId() {
 		return appointmentId;
@@ -79,12 +82,12 @@ public class AppointmentPAO {
 		this.employee = employee;
 	}
 
-	public String getCustomerName() {
-		return customerName;
+	public String getCustomerInfo() {
+		return customerInfo;
 	}
 
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
+	public void setCustomerInfo(String customerInfo) {
+		this.customerInfo = customerInfo;
 	}
 
 	public Date getStartsAt() {

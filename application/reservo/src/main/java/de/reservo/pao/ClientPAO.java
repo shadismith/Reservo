@@ -36,6 +36,8 @@ public class ClientPAO {
 	private Set<AppointmentPAO> appointments;
 	@OneToMany(mappedBy = "notificationId")
 	private Set<NotificationPAO> notifications;
+	@OneToMany(mappedBy = "blockEntryId")
+	private Set<BlockEntryPAO> blockEntries;
 
 	public Long getClientId() {
 		return clientId;
@@ -99,6 +101,14 @@ public class ClientPAO {
 
 	public void setNotifications(Set<NotificationPAO> notifications) {
 		this.notifications = notifications;
+	}
+
+	public Set<BlockEntryPAO> getBlockEntries() {
+		return blockEntries;
+	}
+
+	public void setBlockEntries(Set<BlockEntryPAO> blockEntries) {
+		this.blockEntries = blockEntries;
 	}
 
 }

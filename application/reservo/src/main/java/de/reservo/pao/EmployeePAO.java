@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -31,6 +33,11 @@ public class EmployeePAO {
 	private String familyName;
 	@OneToMany(mappedBy = "appointmentId")
 	private Set<AppointmentPAO> appointments;
+	@ManyToMany(mappedBy = "employees")
+	private Set<EmployeeGroupPAO> employeeGroups;
+	@ManyToMany
+	@JoinTable(name = "SERVICE_EMPLOYEE", joinColumns = @JoinColumn(name = "employeeId", referencedColumnName = "employeeId"), inverseJoinColumns = @JoinColumn(name = "serviceId", referencedColumnName = "serviceId"))
+	private Set<ServicePAO> services;
 
 	public Long getEmployeeId() {
 		return employeeId;
@@ -78,6 +85,22 @@ public class EmployeePAO {
 
 	public void setAppointments(Set<AppointmentPAO> appointments) {
 		this.appointments = appointments;
+	}
+
+	public Set<EmployeeGroupPAO> getEmployeeGroups() {
+		return employeeGroups;
+	}
+
+	public void setEmployeeGroups(Set<EmployeeGroupPAO> employeeGroups) {
+		this.employeeGroups = employeeGroups;
+	}
+
+	public Set<ServicePAO> getServices() {
+		return services;
+	}
+
+	public void setServices(Set<ServicePAO> services) {
+		this.services = services;
 	}
 
 }

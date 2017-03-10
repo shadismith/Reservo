@@ -27,6 +27,9 @@ public class EmployeeGroupPAO {
 	@ManyToMany
 	@JoinTable(name = "SERVICE_EMPLOYEEGROUP", joinColumns = @JoinColumn(name = "groupId", referencedColumnName = "groupId"), inverseJoinColumns = @JoinColumn(name = "serviceId", referencedColumnName = "serviceId"))
 	private Set<ServicePAO> services;
+	@ManyToMany
+	@JoinTable(name = "GROUP_EMPLOYEEGROUP", joinColumns = @JoinColumn(name = "groupId", referencedColumnName = "groupId"), inverseJoinColumns = @JoinColumn(name = "employeeId", referencedColumnName = "employeeId"))
+	private Set<EmployeePAO> employees;
 
 	public Long getGroupId() {
 		return groupId;
@@ -58,6 +61,14 @@ public class EmployeeGroupPAO {
 
 	public void setServices(Set<ServicePAO> services) {
 		this.services = services;
+	}
+
+	public Set<EmployeePAO> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<EmployeePAO> employees) {
+		this.employees = employees;
 	}
 
 }

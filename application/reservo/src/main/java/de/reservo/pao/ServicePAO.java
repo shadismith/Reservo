@@ -28,10 +28,12 @@ public class ServicePAO {
 	private BigDecimal price;
 	@Column(nullable = false, unique = false, updatable = true)
 	private String currency;
-	// @ManyToMany(mappedBy = "services")
-	// private Set<AppointmentPAO> appointments;
 	@ManyToMany(mappedBy = "services")
 	private Set<EmployeeGroupPAO> employeeGroups;
+	@ManyToMany(mappedBy = "services")
+	private Set<EmployeePAO> employees;
+	@ManyToMany(mappedBy = "services")
+	private Set<AppointmentPAO> appointments;
 
 	public Long getServiceId() {
 		return serviceId;
@@ -79,6 +81,22 @@ public class ServicePAO {
 
 	public void setEmployeeGroups(Set<EmployeeGroupPAO> employeeGroups) {
 		this.employeeGroups = employeeGroups;
+	}
+
+	public Set<EmployeePAO> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<EmployeePAO> employees) {
+		this.employees = employees;
+	}
+
+	public Set<AppointmentPAO> getAppointments() {
+		return appointments;
+	}
+
+	public void setAppointments(Set<AppointmentPAO> appointments) {
+		this.appointments = appointments;
 	}
 
 }

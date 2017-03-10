@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -46,9 +48,9 @@ public class AppointmentPAO {
 	private AppointmentState state;
 	@OneToMany(mappedBy = "notificationId")
 	private Set<NotificationPAO> notifications;
-//	@ManyToMany
-//	@JoinTable(joinColumns = @JoinColumn(name = "appointmentId", referencedColumnName = "appointmentId", nullable = false, unique = false, updatable = false), inverseJoinColumns = @JoinColumn(name = "serviceProviderId", referencedColumnName = "serviceProviderId", nullable = false, unique = false, updatable = true))
-//	private List<ServicePAO> services;
+	@ManyToMany
+	@JoinTable(name = "APPOINTMENT_SERVICE", joinColumns = @JoinColumn(name = "appointmentId", referencedColumnName = "appointmentId"), inverseJoinColumns = @JoinColumn(name = "serviceId", referencedColumnName = "serviceId"))
+	private Set<ServicePAO> services;
 
 	public Long getAppointmentId() {
 		return appointmentId;
@@ -128,6 +130,14 @@ public class AppointmentPAO {
 
 	public void setNotifications(Set<NotificationPAO> notifications) {
 		this.notifications = notifications;
+	}
+
+	public Set<ServicePAO> getServices() {
+		return services;
+	}
+
+	public void setServices(Set<ServicePAO> services) {
+		this.services = services;
 	}
 
 }

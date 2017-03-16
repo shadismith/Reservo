@@ -1,6 +1,5 @@
 package de.reservo.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -11,32 +10,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.reservo.pao.VacationPAO;
+import de.reservo.dto.RegisterEmployeeDTO;
+import de.reservo.pao.EmployeePAO;
 
 @RestController
-@RequestMapping(path = "vacation")
-public class VacationController {
+@RequestMapping(path = "/employee")
+public class EmployeeController {
 
 	@RequestMapping(method = RequestMethod.GET, path = "/get")
-	public ResponseEntity<List<VacationPAO>> getVacations(
-			@RequestParam(required = false, name = "startDate") Date pStartDate,
-			@RequestParam(required = false, name = "endDate") Date pEndDate,
-			@RequestParam(required = false, name = "vacationId") Long pVacationId) {
-		return new ResponseEntity<List<VacationPAO>>(HttpStatus.OK);
+	public ResponseEntity<List<EmployeePAO>> getEmployee(
+			@RequestParam(required = false, name = "employeeId") Long pEmployeeId) {
+		return new ResponseEntity<List<EmployeePAO>>(HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(method = RequestMethod.POST, path = "/add")
-	public ResponseEntity<Object> addVacation(@RequestBody VacationPAO pVacation) {
+	public ResponseEntity<Object> addEmployee(
+			@RequestBody RegisterEmployeeDTO pRegisterEmployeeDTO) {
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(method = RequestMethod.POST, path = "/edit")
-	public ResponseEntity<Object> editVacation(@RequestBody VacationPAO pVacation) {
+	public ResponseEntity<Object> editEmployee(
+			@RequestBody EmployeePAO pEmployee) {
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(method = RequestMethod.POST, path = "/delete")
-	public ResponseEntity<Object> deleteVacation(@RequestBody Long pVacationId) {
+	public ResponseEntity<Object> deleteEmployee(
+			@RequestBody Long pEmployeeId) {
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 

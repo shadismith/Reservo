@@ -35,40 +35,40 @@ public class BlockEntryPAO {
 		return blockEntryId;
 	}
 
-	public void setBlockEntryId(Long blockEntryId) {
-		this.blockEntryId = blockEntryId;
+	public void setBlockEntryId(Long pBlockEntryId) {
+		blockEntryId = pBlockEntryId;
 	}
 
 	public ClientPAO getClient() {
 		return client;
 	}
 
-	public void setClient(ClientPAO client) {
-		this.client = client;
+	public void setClient(ClientPAO pClient) {
+		client = pClient;
 	}
 
 	public ServiceProviderPAO getServiceProvider() {
 		return serviceProvider;
 	}
 
-	public void setServiceProvider(ServiceProviderPAO serviceProvider) {
-		this.serviceProvider = serviceProvider;
+	public void setServiceProvider(ServiceProviderPAO pServiceProvider) {
+		serviceProvider = pServiceProvider;
 	}
 
 	public Date getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(Date timestamp) {
-		this.timestamp = timestamp;
+	public void setTimestamp(Date pTimestamp) {
+		timestamp = pTimestamp;
 	}
 
 	public String getReason() {
 		return reason;
 	}
 
-	public void setReason(String reason) {
-		this.reason = reason;
+	public void setReason(String pReason) {
+		reason = pReason;
 	}
 
 }

@@ -48,72 +48,72 @@ public class OpeningTimePAO {
 		return openingTimeId;
 	}
 
-	public void setOpeningTimeId(Long openingTimeId) {
-		this.openingTimeId = openingTimeId;
+	public void setOpeningTimeId(Long pOpeningTimeId) {
+		openingTimeId = pOpeningTimeId;
 	}
 
 	public ServiceProviderPAO getServiceProvider() {
 		return serviceProvider;
 	}
 
-	public void setServiceProvider(ServiceProviderPAO serviceProvider) {
-		this.serviceProvider = serviceProvider;
+	public void setServiceProvider(ServiceProviderPAO pServiceProvider) {
+		serviceProvider = pServiceProvider;
 	}
 
 	public Byte getWeekday() {
 		return weekday;
 	}
 
-	public void setWeekday(Byte weekday) {
-		this.weekday = weekday;
+	public void setWeekday(Byte pWeekday) {
+		weekday = pWeekday;
 	}
 
 	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(Date pDate) {
+		date = pDate;
 	}
 
 	public Date getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+	public void setStartTime(Date pStartTime) {
+		startTime = pStartTime;
 	}
 
 	public Date getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+	public void setEndTime(Date pEndTime) {
+		endTime = pEndTime;
 	}
 
 	public Date getStartBreak() {
 		return startBreak;
 	}
 
-	public void setStartBreak(Date startBreak) {
-		this.startBreak = startBreak;
+	public void setStartBreak(Date pStartBreak) {
+		startBreak = pStartBreak;
 	}
 
 	public Date getEndBreak() {
 		return endBreak;
 	}
 
-	public void setEndBreak(Date endBreak) {
-		this.endBreak = endBreak;
+	public void setEndBreak(Date pEndBreak) {
+		endBreak = pEndBreak;
 	}
 
 	public OpeningTimeType getType() {
 		return type;
 	}
 
-	public void setType(OpeningTimeType type) {
-		this.type = type;
+	public void setType(OpeningTimeType pType) {
+		type = pType;
 	}
 
 }

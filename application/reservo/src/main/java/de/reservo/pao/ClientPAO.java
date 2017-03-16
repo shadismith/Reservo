@@ -5,9 +5,11 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,77 +40,87 @@ public class ClientPAO {
 	private Set<NotificationPAO> notifications;
 	@OneToMany(mappedBy = "blockEntryId")
 	private Set<BlockEntryPAO> blockEntries;
+	@OneToOne(fetch = FetchType.LAZY)
+	private AuthPAO auth;
 
 	public Long getClientId() {
 		return clientId;
 	}
 
-	public void setClientId(Long clientId) {
-		this.clientId = clientId;
+	public void setClientId(Long pClientId) {
+		clientId = pClientId;
 	}
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String pFirstName) {
+		firstName = pFirstName;
 	}
 
 	public String getFamilyName() {
 		return familyName;
 	}
 
-	public void setFamilyName(String familyName) {
-		this.familyName = familyName;
+	public void setFamilyName(String pFamilyName) {
+		familyName = pFamilyName;
 	}
 
 	public String geteMailAddress() {
 		return eMailAddress;
 	}
 
-	public void seteMailAddress(String eMailAddress) {
-		this.eMailAddress = eMailAddress;
+	public void seteMailAddress(String pEMailAddress) {
+		eMailAddress = pEMailAddress;
 	}
 
 	public Date getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
+	public void setCreatedAt(Date pCreatedAt) {
+		createdAt = pCreatedAt;
 	}
 
 	public Date getBannedAt() {
 		return bannedAt;
 	}
 
-	public void setBannedAt(Date bannedAt) {
-		this.bannedAt = bannedAt;
+	public void setBannedAt(Date pBannedAt) {
+		bannedAt = pBannedAt;
 	}
 
 	public Set<AppointmentPAO> getAppointments() {
 		return appointments;
 	}
 
-	public void setAppointments(Set<AppointmentPAO> appointments) {
-		this.appointments = appointments;
+	public void setAppointments(Set<AppointmentPAO> pAppointments) {
+		appointments = pAppointments;
 	}
 
 	public Set<NotificationPAO> getNotifications() {
 		return notifications;
 	}
 
-	public void setNotifications(Set<NotificationPAO> notifications) {
-		this.notifications = notifications;
+	public void setNotifications(Set<NotificationPAO> pNotifications) {
+		notifications = pNotifications;
 	}
 
 	public Set<BlockEntryPAO> getBlockEntries() {
 		return blockEntries;
 	}
 
-	public void setBlockEntries(Set<BlockEntryPAO> blockEntries) {
-		this.blockEntries = blockEntries;
+	public void setBlockEntries(Set<BlockEntryPAO> pBlockEntries) {
+		blockEntries = pBlockEntries;
+	}
+
+	public AuthPAO getAuth() {
+		return auth;
+	}
+
+	public void setAuth(AuthPAO pAuth) {
+		auth = pAuth;
 	}
 
 }

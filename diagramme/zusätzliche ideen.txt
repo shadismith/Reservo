@@ -1,2 +1,0 @@
-- Aufspaltung in mehrere Komponenten: Ein JAR mit DAO + PAO, ein JAR mit Messaging Service Kram
-- Content Validator/Authorization Validator mit einer Art Visitor Pattern

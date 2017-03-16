@@ -44,64 +44,64 @@ public class NotificationPAO {
 		return notificationId;
 	}
 
-	public void setNotificationId(Long notificationId) {
-		this.notificationId = notificationId;
+	public void setNotificationId(Long pNotificationId) {
+		notificationId = pNotificationId;
 	}
 
 	public ClientPAO getClient() {
 		return client;
 	}
 
-	public void setClient(ClientPAO client) {
-		this.client = client;
+	public void setClient(ClientPAO pClient) {
+		client = pClient;
 	}
 
 	public AppointmentPAO getAppointment() {
 		return appointment;
 	}
 
-	public void setAppointment(AppointmentPAO appointment) {
-		this.appointment = appointment;
+	public void setAppointment(AppointmentPAO pAppointment) {
+		appointment = pAppointment;
 	}
 
 	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setMessage(String pMessage) {
+		message = pMessage;
 	}
 
 	public Date getSendAt() {
 		return sendAt;
 	}
 
-	public void setSendAt(Date sendAt) {
-		this.sendAt = sendAt;
+	public void setSendAt(Date pSendAt) {
+		sendAt = pSendAt;
 	}
 
 	public Date getSentAt() {
 		return sentAt;
 	}
 
-	public void setSentAt(Date sentAt) {
-		this.sentAt = sentAt;
+	public void setSentAt(Date pSentAt) {
+		sentAt = pSentAt;
 	}
 
 	public Integer getAttempts() {
 		return attempts;
 	}
 
-	public void setAttempts(Integer attempts) {
-		this.attempts = attempts;
+	public void setAttempts(Integer pAttempts) {
+		attempts = pAttempts;
 	}
 
 	public NotificationType getType() {
 		return type;
 	}
 
-	public void setType(NotificationType type) {
-		this.type = type;
+	public void setType(NotificationType pType) {
+		type = pType;
 	}
 
 }

@@ -42,56 +42,56 @@ public class VacationPAO {
 		return vacationId;
 	}
 
-	public void setVacationId(Long vacationId) {
-		this.vacationId = vacationId;
+	public void setVacationId(Long pVacationId) {
+		vacationId = pVacationId;
 	}
 
 	public ServiceProviderPAO getServiceProvider() {
 		return serviceProvider;
 	}
 
-	public void setServiceProvider(ServiceProviderPAO serviceProvider) {
-		this.serviceProvider = serviceProvider;
+	public void setServiceProvider(ServiceProviderPAO pServiceProvider) {
+		serviceProvider = pServiceProvider;
 	}
 
 	public EmployeePAO getEmployee() {
 		return employee;
 	}
 
-	public void setEmployee(EmployeePAO employee) {
-		this.employee = employee;
+	public void setEmployee(EmployeePAO pEmployee) {
+		employee = pEmployee;
 	}
 
 	public Date getStartsAt() {
 		return startsAt;
 	}
 
-	public void setStartsAt(Date startsAt) {
-		this.startsAt = startsAt;
+	public void setStartsAt(Date pStartsAt) {
+		startsAt = pStartsAt;
 	}
 
 	public Date getEndsAt() {
 		return endsAt;
 	}
 
-	public void setEndsAt(Date endsAt) {
-		this.endsAt = endsAt;
+	public void setEndsAt(Date pEndsAt) {
+		endsAt = pEndsAt;
 	}
 
 	public VacationType getType() {
 		return type;
 	}
 
-	public void setType(VacationType type) {
-		this.type = type;
+	public void setType(VacationType pType) {
+		type = pType;
 	}
 
 	public String getReason() {
 		return reason;
 	}
 
-	public void setReason(String reason) {
-		this.reason = reason;
+	public void setReason(String pReason) {
+		reason = pReason;
 	}
 
 }

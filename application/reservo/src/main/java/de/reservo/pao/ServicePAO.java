@@ -39,64 +39,64 @@ public class ServicePAO {
 		return serviceId;
 	}
 
-	public void setServiceId(Long serviceId) {
-		this.serviceId = serviceId;
+	public void setServiceId(Long pServiceId) {
+		serviceId = pServiceId;
 	}
 
 	public ServiceProviderPAO getServiceProvider() {
 		return serviceProvider;
 	}
 
-	public void setServiceProvider(ServiceProviderPAO serviceProvider) {
-		this.serviceProvider = serviceProvider;
+	public void setServiceProvider(ServiceProviderPAO pServiceProvider) {
+		serviceProvider = pServiceProvider;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String pName) {
+		name = pName;
 	}
 
 	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
+	public void setPrice(BigDecimal pPrice) {
+		price = pPrice;
 	}
 
 	public String getCurrency() {
 		return currency;
 	}
 
-	public void setCurrency(String currency) {
-		this.currency = currency;
+	public void setCurrency(String pCurrency) {
+		currency = pCurrency;
 	}
 
 	public Set<EmployeeGroupPAO> getEmployeeGroups() {
 		return employeeGroups;
 	}
 
-	public void setEmployeeGroups(Set<EmployeeGroupPAO> employeeGroups) {
-		this.employeeGroups = employeeGroups;
+	public void setEmployeeGroups(Set<EmployeeGroupPAO> pEmployeeGroups) {
+		employeeGroups = pEmployeeGroups;
 	}
 
 	public Set<EmployeePAO> getEmployees() {
 		return employees;
 	}
 
-	public void setEmployees(Set<EmployeePAO> employees) {
-		this.employees = employees;
+	public void setEmployees(Set<EmployeePAO> pEmployees) {
+		employees = pEmployees;
 	}
 
 	public Set<AppointmentPAO> getAppointments() {
 		return appointments;
 	}
 
-	public void setAppointments(Set<AppointmentPAO> appointments) {
-		this.appointments = appointments;
+	public void setAppointments(Set<AppointmentPAO> pAppointments) {
+		appointments = pAppointments;
 	}
 
 }

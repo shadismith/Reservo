@@ -45,96 +45,96 @@ public class ServiceProviderPAO {
 		return serviceProviderId;
 	}
 
-	public void setServiceProviderId(Long serviceProviderId) {
-		this.serviceProviderId = serviceProviderId;
+	public void setServiceProviderId(Long pServiceProviderId) {
+		serviceProviderId = pServiceProviderId;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String pName) {
+		name = pName;
 	}
 
 	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress(String pAddress) {
+		address = pAddress;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(String pDescription) {
+		description = pDescription;
 	}
 
 	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setPhone(String pPhone) {
+		phone = pPhone;
 	}
 
 	public Set<OpeningTimePAO> getOpeningTimes() {
 		return openingTimes;
 	}
 
-	public void setOpeningTimes(Set<OpeningTimePAO> openingTimes) {
-		this.openingTimes = openingTimes;
+	public void setOpeningTimes(Set<OpeningTimePAO> pOpeningTimes) {
+		openingTimes = pOpeningTimes;
 	}
 
 	public Set<EmployeePAO> getEmployees() {
 		return employees;
 	}
 
-	public void setEmployees(Set<EmployeePAO> employees) {
-		this.employees = employees;
+	public void setEmployees(Set<EmployeePAO> pEmployees) {
+		employees = pEmployees;
 	}
 
 	public Set<VacationPAO> getVacations() {
 		return vacations;
 	}
 
-	public void setVacations(Set<VacationPAO> vacations) {
-		this.vacations = vacations;
+	public void setVacations(Set<VacationPAO> pVacations) {
+		vacations = pVacations;
 	}
 
 	public Set<EmployeeGroupPAO> getGroups() {
 		return groups;
 	}
 
-	public void setGroups(Set<EmployeeGroupPAO> groups) {
-		this.groups = groups;
+	public void setGroups(Set<EmployeeGroupPAO> pGroups) {
+		groups = pGroups;
 	}
 
 	public Set<ServicePAO> getServices() {
 		return services;
 	}
 
-	public void setServices(Set<ServicePAO> services) {
-		this.services = services;
+	public void setServices(Set<ServicePAO> pServices) {
+		services = pServices;
 	}
 
 	public Set<AppointmentPAO> getAppointments() {
 		return appointments;
 	}
 
-	public void setAppointments(Set<AppointmentPAO> appointments) {
-		this.appointments = appointments;
+	public void setAppointments(Set<AppointmentPAO> pAppointments) {
+		appointments = pAppointments;
 	}
 
 	public Set<BlockEntryPAO> getBlockEntries() {
 		return blockEntries;
 	}
 
-	public void setBlockEntries(Set<BlockEntryPAO> blockEntries) {
-		this.blockEntries = blockEntries;
+	public void setBlockEntries(Set<BlockEntryPAO> pBlockEntries) {
+		blockEntries = pBlockEntries;
 	}
 
 }

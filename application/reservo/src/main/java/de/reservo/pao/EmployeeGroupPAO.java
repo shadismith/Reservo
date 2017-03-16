@@ -36,40 +36,40 @@ public class EmployeeGroupPAO {
 		return groupId;
 	}
 
-	public void setGroupId(Long groupId) {
-		this.groupId = groupId;
+	public void setGroupId(Long pGroupId) {
+		groupId = pGroupId;
 	}
 
 	public ServiceProviderPAO getServiceProvider() {
 		return serviceProvider;
 	}
 
-	public void setServiceProvider(ServiceProviderPAO serviceProvider) {
-		this.serviceProvider = serviceProvider;
+	public void setServiceProvider(ServiceProviderPAO pServiceProvider) {
+		serviceProvider = pServiceProvider;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String pName) {
+		name = pName;
 	}
 
 	public Set<ServicePAO> getServices() {
 		return services;
 	}
 
-	public void setServices(Set<ServicePAO> services) {
-		this.services = services;
+	public void setServices(Set<ServicePAO> pServices) {
+		services = pServices;
 	}
 
 	public Set<EmployeePAO> getEmployees() {
 		return employees;
 	}
 
-	public void setEmployees(Set<EmployeePAO> employees) {
-		this.employees = employees;
+	public void setEmployees(Set<EmployeePAO> pEmployees) {
+		employees = pEmployees;
 	}
 
 }

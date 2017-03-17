@@ -14,7 +14,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
 	@ExceptionHandler(value = InvalidInputException.class)
 	protected ResponseEntity<Object> handleConflict(InvalidInputException pInvalidInputException, WebRequest request) {
-		return new ResponseEntity<Object>("Die Anfrage enthielt ungültige/unvollständige Daten.", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<Object>("Die Anfrage enthielt ungültige oder unvollständige Daten.", HttpStatus.BAD_REQUEST);
 	}
 
 }

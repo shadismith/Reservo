@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.reservo.dto.RegisterClientDTO;
 import de.reservo.dto.RegisterSPDTO;
 import de.reservo.pao.AuthPAO;
+import de.reservo.pao.ClientPAO;
 
 @RestController
 @RequestMapping(path = "/auth")
@@ -36,7 +36,7 @@ public class AuthController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/registerClient")
-	public ResponseEntity<Object> registerClient(@RequestBody(required = true) RegisterClientDTO pRegisterClientDTO) {
+	public ResponseEntity<Object> registerClient(@RequestBody(required = true) ClientPAO pClientPAO) {
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 

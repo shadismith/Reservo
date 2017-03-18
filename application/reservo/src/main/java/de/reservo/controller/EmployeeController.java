@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.reservo.dto.RegisterEmployeeDTO;
 import de.reservo.pao.EmployeePAO;
 
 @RestController
@@ -25,7 +24,7 @@ public class EmployeeController {
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/add")
 	public ResponseEntity<Object> addEmployee(
-			@RequestBody RegisterEmployeeDTO pRegisterEmployeeDTO) {
+			@RequestBody EmployeePAO pEmployeePAO) {
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 	

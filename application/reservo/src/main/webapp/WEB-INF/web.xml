@@ -45,7 +45,7 @@
 
 	<filter>
 		<filter-name>ExampleFilter</filter-name>
-		<filter-class>de.reservo.filter.ExampleFilter</filter-class>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>ExampleFilter</filter-name>

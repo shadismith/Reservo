@@ -37,10 +37,10 @@ public class ClientFilter implements Filter {
 				ClientPAO clientPAO = (ClientPAO) authAttribute;
 				pChain.doFilter(pRequest, pResponse);
 			} catch(Exception e) {
-				response.sendError(HttpStatus.FORBIDDEN.value(), "Ihre Rolle hat keinen Zugriff auf diese Funktion.");
+				response.sendError(HttpStatus.FORBIDDEN.value());
 			}
 		} else {
-			response.sendError(HttpStatus.BAD_REQUEST.value(), "Nur unauthentifizierte Nutzer können diese Funktion nutzen.");
+			response.sendError(HttpStatus.BAD_REQUEST.value());
 		}
 	}
 

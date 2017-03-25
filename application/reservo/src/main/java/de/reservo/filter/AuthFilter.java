@@ -31,8 +31,7 @@ public class AuthFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) pResponse;
 		HttpSession session = request.getSession();
 		if (session.getAttribute(Constants.AUTHENTICATION_OBJECT) == null) {
-			response.sendError(HttpStatus.UNAUTHORIZED.value(),
-					"Nur authentifizierte Nutzer können diese Funktion nutzen.");
+			response.sendError(HttpStatus.UNAUTHORIZED.value());
 		} else {
 			pChain.doFilter(pRequest, pResponse);
 		}

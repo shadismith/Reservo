@@ -31,7 +31,7 @@ public class AnonFilter implements Filter{
 		HttpServletResponse response = (HttpServletResponse) pResponse;
 		HttpSession session = request.getSession();
 		if (session.getAttribute(Constants.AUTHENTICATION_OBJECT) != null) {
-			response.sendError(HttpStatus.BAD_REQUEST.value(), "Nur unauthentifizierte Nutzer können diese Funktion nutzen.");
+			response.sendError(HttpStatus.BAD_REQUEST.value());
 		} else {
 			pChain.doFilter(pRequest, pResponse);
 		}

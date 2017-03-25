@@ -15,13 +15,4 @@
 	<context:component-scan base-package="de.reservo.**"></context:component-scan>
 	<import resource="spring/database.xml" />
 
-	<bean id="authService" class="de.reservo.service.internal.AuthServiceImpl"
-		scope="session">
-		<aop:scoped-proxy />
-	</bean>
-
-	<bean id="ExampleFilter" class="de.reservo.filter.ExampleFilter">
-		<property name="authService" ref="authService" />
-	</bean>
-
 </beans>

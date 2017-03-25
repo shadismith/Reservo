@@ -1,13 +1,11 @@
 package de.reservo.service;
 
+import javax.naming.AuthenticationException;
+
+import de.reservo.pao.AuthPAO;
+
 public interface AuthService {
 	
-	void test();
-	
-	boolean isTestStringSet();
-	
-	void setTestString(String pTestString);
-	
-	String getTestString();
+	Object login(AuthPAO pAuthPAO) throws AuthenticationException;
 
 }

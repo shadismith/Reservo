@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 
-import de.reservo.Constants;
+import de.reservo.Util;
 import de.reservo.pao.ClientPAO;
 
 public class ClientFilter implements Filter {
@@ -31,7 +31,7 @@ public class ClientFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) pRequest;
 		HttpServletResponse response = (HttpServletResponse) pResponse;
 		HttpSession session = request.getSession();
-		Object authAttribute = session.getAttribute(Constants.AUTHENTICATION_OBJECT);
+		Object authAttribute = session.getAttribute(Util.AUTHENTICATION_OBJECT);
 		if (authAttribute != null) {
 			try {
 				ClientPAO clientPAO = (ClientPAO) authAttribute;

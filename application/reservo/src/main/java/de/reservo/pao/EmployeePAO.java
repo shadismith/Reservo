@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -41,7 +40,8 @@ public class EmployeePAO {
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "SERVICE_EMPLOYEE", joinColumns = @JoinColumn(name = "employeeId", referencedColumnName = "employeeId"), inverseJoinColumns = @JoinColumn(name = "serviceId", referencedColumnName = "serviceId"))
 	private Set<ServicePAO> services;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
+	@JoinColumn(name = "authId", nullable = true, updatable = false, unique = true)
 	private AuthPAO auth;
 
 	public Long getEmployeeId() {

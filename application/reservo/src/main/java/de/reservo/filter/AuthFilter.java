@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 
-import de.reservo.Constants;
+import de.reservo.Util;
 
 public class AuthFilter implements Filter {
 
@@ -30,9 +30,8 @@ public class AuthFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) pRequest;
 		HttpServletResponse response = (HttpServletResponse) pResponse;
 		HttpSession session = request.getSession();
-		if (session.getAttribute(Constants.AUTHENTICATION_OBJECT) == null) {
-			response.sendError(HttpStatus.UNAUTHORIZED.value(),
-					"Nur authentifizierte Nutzer können diese Funktion nutzen.");
+		if (session.getAttribute(Util.AUTHENTICATION_OBJECT) == null) {
+			response.sendError(HttpStatus.UNAUTHORIZED.value());
 		} else {
 			pChain.doFilter(pRequest, pResponse);
 		}

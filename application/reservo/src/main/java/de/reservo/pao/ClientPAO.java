@@ -3,11 +3,12 @@ package de.reservo.pao;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -26,12 +27,12 @@ public class ClientPAO {
 	private String firstName;
 	@Column(unique = false, updatable = true, nullable = false)
 	private String familyName;
-	@Column(unique = false, updatable = true, nullable = false)
+	@Column(unique = true, updatable = true, nullable = false)
 	private String eMailAddress;
 	@Column(unique = false, updatable = false, nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
-	@Column(unique = false, updatable = true, nullable = false)
+	@Column(unique = false, updatable = true, nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date bannedAt;
 	@OneToMany(mappedBy = "appointmentId")
@@ -40,7 +41,8 @@ public class ClientPAO {
 	private Set<NotificationPAO> notifications;
 	@OneToMany(mappedBy = "blockEntryId")
 	private Set<BlockEntryPAO> blockEntries;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "authId", nullable = true, updatable = false, unique = true)
 	private AuthPAO auth;
 
 	public Long getClientId() {

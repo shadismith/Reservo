@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.reservo.Constants;
-import de.reservo.dto.RegisterSPDTO;
+import de.reservo.Util;
+import de.reservo.exception.InvalidInputException;
+import de.reservo.exception.MailOrLoginExistsException;
 import de.reservo.pao.AuthPAO;
-import de.reservo.pao.ClientPAO;
 import de.reservo.service.AuthService;
 
 @RestController
@@ -30,13 +30,13 @@ public class AuthController {
 			throws AuthenticationException {
 		pRequest.getSession().invalidate();
 		HttpSession session = pRequest.getSession();
-		session.setAttribute(Constants.AUTHENTICATION_OBJECT, authService.login(pAuth));
+		session.setAttribute(Util.AUTHENTICATION_OBJECT, authService.login(pAuth));
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/logout")
 	public ResponseEntity<Object> logout(HttpServletRequest pRequest) {
-		pRequest.getSession().setAttribute(Constants.AUTHENTICATION_OBJECT, null);
+		pRequest.getSession().setAttribute(Util.AUTHENTICATION_OBJECT, null);
 		pRequest.getSession().invalidate();
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
@@ -47,12 +47,14 @@ public class AuthController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/registerServiceProvider")
-	public ResponseEntity<Object> registerServiceProvider(@RequestBody(required = true) RegisterSPDTO pRegisterSPDTO) {
+	public ResponseEntity<Object> registerServiceProvider(@RequestBody(required = true) AuthPAO pAuthPAO) throws InvalidInputException, MailOrLoginExistsException {
+		authService.registerServiceProvider(pAuthPAO);
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/registerClient")
-	public ResponseEntity<Object> registerClient(@RequestBody(required = true) ClientPAO pClientPAO) {
+	public ResponseEntity<Object> registerClient(@RequestBody(required = true) AuthPAO pAuthPAO) throws InvalidInputException, MailOrLoginExistsException {
+		authService.registerClient(pAuthPAO);
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 

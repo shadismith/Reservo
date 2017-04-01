@@ -1,10 +1,11 @@
 package de.reservo.pao;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,21 +16,22 @@ public class AuthPAO {
 	@Id
 	@GeneratedValue
 	private Long authId;
-	@OneToOne
-	@JoinColumn(name = "clientId", nullable = true, updatable = false, unique = true)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private ClientPAO client;
-	@OneToOne
-	@JoinColumn(name = "employeeId", nullable = true, updatable = false, unique = true)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private EmployeePAO employee;
 	@Column(nullable = false, unique = true, updatable = false)
 	private String login;
 	@Column(nullable = false, unique = false, updatable = true)
 	private String password;
-	@Column(nullable = false, unique = false, updatable = true)
+	@Column(nullable = true, unique = false, updatable = true) // ignored for
+																// testing
 	private String salt;
-	@Column(nullable = false, unique = false, updatable = true)
+	@Column(nullable = true, unique = false, updatable = true) // ignored for
+																// testing
 	private String secretQuestion;
-	@Column(nullable = false, unique = false, updatable = true)
+	@Column(nullable = true, unique = false, updatable = true) // ignored for
+																// testing
 	private String secretAnswer;
 
 	public Long getAuthId() {

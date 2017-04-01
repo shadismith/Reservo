@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 
-import de.reservo.Constants;
+import de.reservo.Util;
 import de.reservo.pao.EmployeePAO;
 
 public class EmployeeEmployeeFilter implements Filter {
@@ -31,17 +31,16 @@ public class EmployeeEmployeeFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) pRequest;
 		HttpServletResponse response = (HttpServletResponse) pResponse;
 		HttpSession session = request.getSession();
-		Object authAttribute = session.getAttribute(Constants.AUTHENTICATION_OBJECT);
+		Object authAttribute = session.getAttribute(Util.AUTHENTICATION_OBJECT);
 		if (authAttribute != null) {
 			try {
 				EmployeePAO employeePAO = (EmployeePAO) authAttribute;
 				pChain.doFilter(pRequest, pResponse);
 			} catch (Exception e) {
-				response.sendError(HttpStatus.FORBIDDEN.value(), "Ihre Rolle hat keinen Zugriff auf diese Funktion.");
+				response.sendError(HttpStatus.FORBIDDEN.value());
 			}
 		} else {
-			response.sendError(HttpStatus.BAD_REQUEST.value(),
-					"Nur unauthentifizierte Nutzer können diese Funktion nutzen.");
+			response.sendError(HttpStatus.BAD_REQUEST.value());
 		}
 	}
 

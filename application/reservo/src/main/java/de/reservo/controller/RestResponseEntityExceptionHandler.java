@@ -1,5 +1,7 @@
 package de.reservo.controller;
 
+import javax.naming.AuthenticationException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -21,6 +23,11 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 	@ExceptionHandler(value = MailOrLoginExistsException.class)
 	protected ResponseEntity<Object> handleConflict(MailOrLoginExistsException pMailOrLoginExistsException, WebRequest request) {
 		return new ResponseEntity<Object>(pMailOrLoginExistsException.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(value = AuthenticationException.class)
+	protected ResponseEntity<Object> handleConflict(AuthenticationException pAuthenticationException, WebRequest request) {
+		return new ResponseEntity<Object>(pAuthenticationException.getMessage(), HttpStatus.UNAUTHORIZED);
 	}
 
 }

@@ -25,7 +25,7 @@ public class EmployeePAO {
 	@GeneratedValue
 	private Long employeeId;
 	@JoinColumn(name = "serviceProviderId", nullable = false, unique = false, updatable = false)
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private ServiceProviderPAO serviceProvider;
 	@Column(nullable = false, unique = false, updatable = true)
 	private EmployeeRole role;

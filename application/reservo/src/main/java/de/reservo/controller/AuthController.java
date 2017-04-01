@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.reservo.Util;
-import de.reservo.dto.RegisterSPDTO;
 import de.reservo.exception.InvalidInputException;
 import de.reservo.exception.MailOrLoginExistsException;
 import de.reservo.pao.AuthPAO;
@@ -48,7 +47,8 @@ public class AuthController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/registerServiceProvider")
-	public ResponseEntity<Object> registerServiceProvider(@RequestBody(required = true) RegisterSPDTO pRegisterSPDTO) {
+	public ResponseEntity<Object> registerServiceProvider(@RequestBody(required = true) AuthPAO pAuthPAO) throws InvalidInputException, MailOrLoginExistsException {
+		authService.registerServiceProvider(pAuthPAO);
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 

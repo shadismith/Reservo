@@ -12,4 +12,6 @@ public interface AuthService {
 
 	void registerClient(AuthPAO pAuthPAO) throws InvalidInputException, MailOrLoginExistsException;
 
+	void registerServiceProvider(AuthPAO pAuthPAO) throws InvalidInputException, MailOrLoginExistsException;
+
 }

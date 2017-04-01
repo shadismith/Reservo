@@ -28,7 +28,7 @@ public class ServiceProviderPAO {
 	private String phone;
 	@OneToMany(mappedBy = "openingTimeId", cascade = CascadeType.ALL)
 	private Set<OpeningTimePAO> openingTimes;
-	@OneToMany(mappedBy = "employeeId", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	private Set<EmployeePAO> employees;
 	@OneToMany(mappedBy = "vacationId", cascade = CascadeType.ALL)
 	private Set<VacationPAO> vacations;

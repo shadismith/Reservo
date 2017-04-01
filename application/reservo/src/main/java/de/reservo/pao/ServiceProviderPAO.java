@@ -30,7 +30,7 @@ public class ServiceProviderPAO {
 	private Set<OpeningTimePAO> openingTimes;
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<EmployeePAO> employees;
-	@OneToMany(mappedBy = "vacationId", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "vacationId", cascade = CascadeType.ALL)//TODO evtl entfernen, wie bei employees auch
 	private Set<VacationPAO> vacations;
 	@OneToMany(mappedBy = "groupId", cascade = CascadeType.ALL)
 	private Set<EmployeeGroupPAO> groups;

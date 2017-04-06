@@ -5,10 +5,13 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "SERVICE_PROVIDER")
@@ -26,19 +29,26 @@ public class ServiceProviderPAO {
 	private String description;
 	@Column(unique = true, updatable = true, nullable = false)
 	private String phone;
-	@OneToMany(mappedBy = "openingTimeId", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<OpeningTimePAO> openingTimes;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "serviceProvider")
+	@JsonIgnore
 	private Set<EmployeePAO> employees;
-	@OneToMany(mappedBy = "vacationId", cascade = CascadeType.ALL)//TODO evtl entfernen, wie bei employees auch
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "serviceProvider")
+	@JsonIgnore
 	private Set<VacationPAO> vacations;
-	@OneToMany(mappedBy = "groupId", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "serviceProvider")
+	@JsonIgnore
 	private Set<EmployeeGroupPAO> groups;
-	@OneToMany(mappedBy = "serviceId", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "serviceProvider")
+	@JsonIgnore
 	private Set<ServicePAO> services;
-	@OneToMany(mappedBy = "appointmentId", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "serviceProvider")
+	@JsonIgnore
 	private Set<AppointmentPAO> appointments;
-	@OneToMany(mappedBy = "blockEntryId")
+	@OneToMany(mappedBy = "serviceProvider")
+	@JsonIgnore
 	private Set<BlockEntryPAO> blockEntries;
 
 	public Long getServiceProviderId() {

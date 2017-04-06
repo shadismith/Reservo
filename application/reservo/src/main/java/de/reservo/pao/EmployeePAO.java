@@ -25,7 +25,7 @@ public class EmployeePAO {
 	@GeneratedValue
 	private Long employeeId;
 	@JoinColumn(name = "serviceProviderId", nullable = false, unique = false, updatable = false)
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	private ServiceProviderPAO serviceProvider;
 	@Column(nullable = false, unique = false, updatable = true)
 	private EmployeeRole role;
@@ -33,7 +33,7 @@ public class EmployeePAO {
 	private String firstName;
 	@Column(nullable = false, unique = false, updatable = true)
 	private String familyName;
-	@OneToMany(mappedBy = "appointmentId")
+	@OneToMany(mappedBy = "employee")
 	private Set<AppointmentPAO> appointments;
 	@ManyToMany(mappedBy = "employees")
 	private Set<EmployeeGroupPAO> employeeGroups;

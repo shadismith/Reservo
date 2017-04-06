@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "CLIENT")
@@ -35,11 +38,12 @@ public class ClientPAO {
 	@Column(unique = false, updatable = true, nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date bannedAt;
-	@OneToMany(mappedBy = "appointmentId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "client")
+	@JsonManagedReference
 	private Set<AppointmentPAO> appointments;
-	@OneToMany(mappedBy = "notificationId")
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	private Set<NotificationPAO> notifications;
-	@OneToMany(mappedBy = "blockEntryId")
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	private Set<BlockEntryPAO> blockEntries;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "authId", nullable = true, updatable = false, unique = true)

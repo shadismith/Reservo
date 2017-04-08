@@ -99,6 +99,7 @@ public class ServiceProviderPAO {
 		openingTimes = pOpeningTimes;
 	}
 
+	@JsonIgnore
 	public Set<EmployeePAO> getEmployees() {
 		return employees;
 	}
@@ -107,6 +108,7 @@ public class ServiceProviderPAO {
 		employees = pEmployees;
 	}
 
+	@JsonIgnore
 	public Set<VacationPAO> getVacations() {
 		return vacations;
 	}
@@ -115,6 +117,7 @@ public class ServiceProviderPAO {
 		vacations = pVacations;
 	}
 
+	@JsonIgnore
 	public Set<EmployeeGroupPAO> getGroups() {
 		return groups;
 	}
@@ -123,6 +126,7 @@ public class ServiceProviderPAO {
 		groups = pGroups;
 	}
 
+	@JsonIgnore
 	public Set<ServicePAO> getServices() {
 		return services;
 	}
@@ -131,6 +135,7 @@ public class ServiceProviderPAO {
 		services = pServices;
 	}
 
+	@JsonIgnore
 	public Set<AppointmentPAO> getAppointments() {
 		return appointments;
 	}
@@ -139,6 +144,7 @@ public class ServiceProviderPAO {
 		appointments = pAppointments;
 	}
 
+	@JsonIgnore
 	public Set<BlockEntryPAO> getBlockEntries() {
 		return blockEntries;
 	}

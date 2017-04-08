@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "SERVICE")
 public class ServicePAO {
@@ -43,6 +45,7 @@ public class ServicePAO {
 		serviceId = pServiceId;
 	}
 
+	@JsonIgnore
 	public ServiceProviderPAO getServiceProvider() {
 		return serviceProvider;
 	}
@@ -75,6 +78,7 @@ public class ServicePAO {
 		currency = pCurrency;
 	}
 
+	@JsonIgnore
 	public Set<EmployeeGroupPAO> getEmployeeGroups() {
 		return employeeGroups;
 	}
@@ -83,6 +87,7 @@ public class ServicePAO {
 		employeeGroups = pEmployeeGroups;
 	}
 
+	@JsonIgnore
 	public Set<EmployeePAO> getEmployees() {
 		return employees;
 	}
@@ -91,6 +96,7 @@ public class ServicePAO {
 		employees = pEmployees;
 	}
 
+	@JsonIgnore
 	public Set<AppointmentPAO> getAppointments() {
 		return appointments;
 	}

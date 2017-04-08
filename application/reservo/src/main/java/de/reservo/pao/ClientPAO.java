@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "CLIENT")
@@ -39,7 +39,6 @@ public class ClientPAO {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date bannedAt;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "client")
-	@JsonManagedReference
 	private Set<AppointmentPAO> appointments;
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	private Set<NotificationPAO> notifications;
@@ -81,6 +80,7 @@ public class ClientPAO {
 		eMailAddress = pEMailAddress;
 	}
 
+	@JsonIgnore
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -89,6 +89,7 @@ public class ClientPAO {
 		createdAt = pCreatedAt;
 	}
 
+	@JsonIgnore
 	public Date getBannedAt() {
 		return bannedAt;
 	}
@@ -97,6 +98,7 @@ public class ClientPAO {
 		bannedAt = pBannedAt;
 	}
 
+	@JsonIgnore
 	public Set<AppointmentPAO> getAppointments() {
 		return appointments;
 	}
@@ -105,6 +107,7 @@ public class ClientPAO {
 		appointments = pAppointments;
 	}
 
+	@JsonIgnore
 	public Set<NotificationPAO> getNotifications() {
 		return notifications;
 	}
@@ -113,6 +116,7 @@ public class ClientPAO {
 		notifications = pNotifications;
 	}
 
+	@JsonIgnore
 	public Set<BlockEntryPAO> getBlockEntries() {
 		return blockEntries;
 	}
@@ -121,6 +125,7 @@ public class ClientPAO {
 		blockEntries = pBlockEntries;
 	}
 
+	@JsonIgnore
 	public AuthPAO getAuth() {
 		return auth;
 	}

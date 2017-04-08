@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import de.reservo.enums.EmployeeRole;
 
 @Entity
@@ -84,6 +86,7 @@ public class EmployeePAO {
 		familyName = pFamilyName;
 	}
 
+	@JsonIgnore
 	public Set<AppointmentPAO> getAppointments() {
 		return appointments;
 	}
@@ -92,6 +95,7 @@ public class EmployeePAO {
 		appointments = pAppointments;
 	}
 
+	@JsonIgnore
 	public Set<EmployeeGroupPAO> getEmployeeGroups() {
 		return employeeGroups;
 	}
@@ -100,6 +104,7 @@ public class EmployeePAO {
 		employeeGroups = pEmployeeGroups;
 	}
 
+	@JsonIgnore
 	public Set<ServicePAO> getServices() {
 		return services;
 	}
@@ -108,6 +113,7 @@ public class EmployeePAO {
 		services = pServices;
 	}
 
+	@JsonIgnore
 	public AuthPAO getAuth() {
 		return auth;
 	}

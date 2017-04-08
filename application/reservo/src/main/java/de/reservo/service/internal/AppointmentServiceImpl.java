@@ -2,6 +2,7 @@ package de.reservo.service.internal;
 
 import java.util.Date;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 	@Override
 	public Set<AppointmentPAO> getClientAppointments(Date pStartDate, Date pEndDate, Long pAppointmentId,
 			Long pClientId) {
-		return appointmentDAO.findByClientClientId(pClientId);
+		return appointmentDAO.findByClientClientId(pClientId).stream()
+				.filter(appointment -> (appointment.getState() == AppointmentState.PLANNED))
+				.collect(Collectors.toSet());
 	}
 
 	@Override
@@ -47,8 +50,13 @@ public class AppointmentServiceImpl implements AppointmentService {
 	}
 
 	@Override
-	public Set<AppointmentPAO> getSPAppointment(Date pStartDate, Date pEndDate, Long pAppointmentId, Long pServiceProviderId) {
-		return appointmentDAO.findByServiceProviderServiceProviderId(pServiceProviderId);
+	public Set<AppointmentPAO> getSPAppointment(Date pStartDate, Date pEndDate, Long pAppointmentId,
+			Long pServiceProviderId) {
+		return appointmentDAO.findByServiceProviderServiceProviderId(pServiceProviderId).stream()
+				.filter(appointment -> (appointment.getState() == AppointmentState.PLANNED
+						|| appointment.getState() == AppointmentState.COMPLETED
+						|| appointment.getState() == AppointmentState.CANCELLED))
+				.collect(Collectors.toSet());
 	}
 
 	@Override

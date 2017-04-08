@@ -10,4 +10,6 @@ public interface AppointmentDAO extends CrudRepository<AppointmentPAO, Long> {
 
 	Set<AppointmentPAO> findByClientClientId(Long pClientId);
 
+	Set<AppointmentPAO> findByServiceProviderServiceProviderId(Long pServiceProviderId);
+
 }

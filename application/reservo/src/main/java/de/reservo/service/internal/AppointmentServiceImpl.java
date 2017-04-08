@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import com.mchange.rmi.NotAuthorizedException;
 
 import de.reservo.dao.AppointmentDAO;
-import de.reservo.dao.ClientDAO;
 import de.reservo.enums.AppointmentState;
 import de.reservo.pao.AppointmentPAO;
 import de.reservo.pao.ClientPAO;
+import de.reservo.pao.ServiceProviderPAO;
 import de.reservo.service.AppointmentService;
 
 @Service
@@ -21,15 +21,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 	@Autowired
 	private AppointmentDAO appointmentDAO;
 
-	@Autowired
-	private ClientDAO clientDAO;
-
 	@Override
 	public Set<AppointmentPAO> getClientAppointments(Date pStartDate, Date pEndDate, Long pAppointmentId,
 			Long pClientId) {
-		// ClientPAO client = clientDAO.findOne(pClientId);
-		// Set<AppointmentPAO> appointments = client.getAppointments();
-		// return appointments;
 		return appointmentDAO.findByClientClientId(pClientId);
 	}
 
@@ -46,6 +40,30 @@ public class AppointmentServiceImpl implements AppointmentService {
 		AppointmentPAO appointment = appointmentDAO.findOne(pAppointmentId);
 		if (appointment.getClient().getClientId() == pClientId) {
 			appointment.setState(AppointmentState.CANCELLED);
+			appointmentDAO.save(appointment);
+		} else {
+			throw new NotAuthorizedException();
+		}
+	}
+
+	@Override
+	public Set<AppointmentPAO> getSPAppointment(Date pStartDate, Date pEndDate, Long pAppointmentId, Long pServiceProviderId) {
+		return appointmentDAO.findByServiceProviderServiceProviderId(pServiceProviderId);
+	}
+
+	@Override
+	public void addSPAppointment(AppointmentPAO pAppointmentPAO, Long pServiceProviderId) {
+		pAppointmentPAO.setServiceProvider(new ServiceProviderPAO());
+		pAppointmentPAO.getServiceProvider().setServiceProviderId(pServiceProviderId);
+		pAppointmentPAO.setState(AppointmentState.PLANNED);
+		appointmentDAO.save(pAppointmentPAO);
+	}
+
+	@Override
+	public void deleteSPAppointment(Long pAppointmentId, Long pServiceProviderId) throws NotAuthorizedException {
+		AppointmentPAO appointment = appointmentDAO.findOne(pAppointmentId);
+		if (appointment.getServiceProvider().getServiceProviderId() == pServiceProviderId) {
+			appointment.setState(AppointmentState.DELETED);
 			appointmentDAO.save(appointment);
 		} else {
 			throw new NotAuthorizedException();

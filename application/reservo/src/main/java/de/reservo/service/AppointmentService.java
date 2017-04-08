@@ -15,4 +15,10 @@ public interface AppointmentService {
 
 	void cancelClientAppointment(Long pAppointmentId, Long pClientId) throws NotAuthorizedException;
 
+	Set<AppointmentPAO> getSPAppointment(Date pStartDate, Date pEndDate, Long pAppointmentId, Long pServiceProviderId);
+
+	void addSPAppointment(AppointmentPAO pAppointmentPAO, Long pServiceProviderId);
+
+	void deleteSPAppointment(Long pAppointmentId, Long pServiceProviderId) throws NotAuthorizedException;
+
 }

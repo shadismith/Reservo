@@ -88,6 +88,10 @@
 		<filter-name>AuthFilter</filter-name>
 		<url-pattern>/controller/auth/logout</url-pattern>
 	</filter-mapping>
+	<filter-mapping>
+		<filter-name>EmployeeEmployeeFilter</filter-name>
+		<url-pattern>/controller/service/getEmployeesWithService</url-pattern>
+	</filter-mapping>
 
 	<!-- Client filter -->
 	<filter>
@@ -131,14 +135,6 @@
 	<filter-mapping>
 		<filter-name>EmployeeEmployeeFilter</filter-name>
 		<url-pattern>/controller/employee/getEmployeesInGroup</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>EmployeeEmployeeFilter</filter-name>
-		<url-pattern>/controller/service/get</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>EmployeeEmployeeFilter</filter-name>
-		<url-pattern>/controller/service/getEmployeesWithService</url-pattern>
 	</filter-mapping>
 
 	<!-- Employee role trustee filter -->

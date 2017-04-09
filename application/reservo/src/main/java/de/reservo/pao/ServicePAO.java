@@ -3,8 +3,10 @@ package de.reservo.pao;
 import java.math.BigDecimal;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -30,11 +32,11 @@ public class ServicePAO {
 	private BigDecimal price;
 	@Column(nullable = false, unique = false, updatable = true)
 	private String currency;
-	@ManyToMany(mappedBy = "services")
+	@ManyToMany(mappedBy = "services", cascade = CascadeType.ALL)
 	private Set<EmployeeGroupPAO> employeeGroups;
-	@ManyToMany(mappedBy = "services")
+	@ManyToMany(mappedBy = "services", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<EmployeePAO> employees;
-	@ManyToMany(mappedBy = "services")
+	@ManyToMany(mappedBy = "services", cascade = CascadeType.ALL)
 	private Set<AppointmentPAO> appointments;
 
 	public Long getServiceId() {

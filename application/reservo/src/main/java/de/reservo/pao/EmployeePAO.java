@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import de.reservo.enums.EmployeeRole;
 
@@ -25,7 +28,7 @@ public class EmployeePAO {
 	@GeneratedValue
 	private Long employeeId;
 	@JoinColumn(name = "serviceProviderId", nullable = false, unique = false, updatable = false)
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	private ServiceProviderPAO serviceProvider;
 	@Column(nullable = false, unique = false, updatable = true)
 	private EmployeeRole role;
@@ -33,11 +36,11 @@ public class EmployeePAO {
 	private String firstName;
 	@Column(nullable = false, unique = false, updatable = true)
 	private String familyName;
-	@OneToMany(mappedBy = "appointmentId")
+	@OneToMany(mappedBy = "employee")
 	private Set<AppointmentPAO> appointments;
 	@ManyToMany(mappedBy = "employees")
 	private Set<EmployeeGroupPAO> employeeGroups;
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "SERVICE_EMPLOYEE", joinColumns = @JoinColumn(name = "employeeId", referencedColumnName = "employeeId"), inverseJoinColumns = @JoinColumn(name = "serviceId", referencedColumnName = "serviceId"))
 	private Set<ServicePAO> services;
 	@OneToOne
@@ -84,6 +87,7 @@ public class EmployeePAO {
 		familyName = pFamilyName;
 	}
 
+	@JsonIgnore
 	public Set<AppointmentPAO> getAppointments() {
 		return appointments;
 	}
@@ -92,6 +96,7 @@ public class EmployeePAO {
 		appointments = pAppointments;
 	}
 
+	@JsonIgnore
 	public Set<EmployeeGroupPAO> getEmployeeGroups() {
 		return employeeGroups;
 	}
@@ -100,6 +105,7 @@ public class EmployeePAO {
 		employeeGroups = pEmployeeGroups;
 	}
 
+	@JsonIgnore
 	public Set<ServicePAO> getServices() {
 		return services;
 	}
@@ -108,6 +114,7 @@ public class EmployeePAO {
 		services = pServices;
 	}
 
+	@JsonIgnore
 	public AuthPAO getAuth() {
 		return auth;
 	}

@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -16,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import de.reservo.enums.AppointmentState;
 
@@ -47,9 +50,9 @@ public class AppointmentPAO {
 	private String description;
 	@Column(nullable = false, updatable = true, unique = false)
 	private AppointmentState state;
-	@OneToMany(mappedBy = "notificationId")
+	@OneToMany(mappedBy = "appointment")
 	private Set<NotificationPAO> notifications;
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name = "APPOINTMENT_SERVICE", joinColumns = @JoinColumn(name = "appointmentId", referencedColumnName = "appointmentId"), inverseJoinColumns = @JoinColumn(name = "serviceId", referencedColumnName = "serviceId"))
 	private Set<ServicePAO> services;
 
@@ -125,6 +128,7 @@ public class AppointmentPAO {
 		state = pState;
 	}
 
+	@JsonIgnore
 	public Set<NotificationPAO> getNotifications() {
 		return notifications;
 	}

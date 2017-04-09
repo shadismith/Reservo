@@ -46,7 +46,7 @@ public class EmployeeTrusteeFilter implements Filter {
 				response.sendError(HttpStatus.FORBIDDEN.value());
 			}
 		} else {
-			response.sendError(HttpStatus.BAD_REQUEST.value());
+			response.sendError(HttpStatus.UNAUTHORIZED.value());
 		}
 	}
 

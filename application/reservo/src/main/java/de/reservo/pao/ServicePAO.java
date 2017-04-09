@@ -3,14 +3,18 @@ package de.reservo.pao;
 import java.math.BigDecimal;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "SERVICE")
@@ -28,11 +32,11 @@ public class ServicePAO {
 	private BigDecimal price;
 	@Column(nullable = false, unique = false, updatable = true)
 	private String currency;
-	@ManyToMany(mappedBy = "services")
+	@ManyToMany(mappedBy = "services", cascade = CascadeType.ALL)
 	private Set<EmployeeGroupPAO> employeeGroups;
-	@ManyToMany(mappedBy = "services")
+	@ManyToMany(mappedBy = "services", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<EmployeePAO> employees;
-	@ManyToMany(mappedBy = "services")
+	@ManyToMany(mappedBy = "services", cascade = CascadeType.ALL)
 	private Set<AppointmentPAO> appointments;
 
 	public Long getServiceId() {
@@ -43,6 +47,7 @@ public class ServicePAO {
 		serviceId = pServiceId;
 	}
 
+	@JsonIgnore
 	public ServiceProviderPAO getServiceProvider() {
 		return serviceProvider;
 	}
@@ -75,6 +80,7 @@ public class ServicePAO {
 		currency = pCurrency;
 	}
 
+	@JsonIgnore
 	public Set<EmployeeGroupPAO> getEmployeeGroups() {
 		return employeeGroups;
 	}
@@ -83,6 +89,7 @@ public class ServicePAO {
 		employeeGroups = pEmployeeGroups;
 	}
 
+	@JsonIgnore
 	public Set<EmployeePAO> getEmployees() {
 		return employees;
 	}
@@ -91,6 +98,7 @@ public class ServicePAO {
 		employees = pEmployees;
 	}
 
+	@JsonIgnore
 	public Set<AppointmentPAO> getAppointments() {
 		return appointments;
 	}

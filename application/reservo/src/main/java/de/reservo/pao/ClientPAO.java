@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "CLIENT")
@@ -35,11 +38,11 @@ public class ClientPAO {
 	@Column(unique = false, updatable = true, nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date bannedAt;
-	@OneToMany(mappedBy = "appointmentId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "client")
 	private Set<AppointmentPAO> appointments;
-	@OneToMany(mappedBy = "notificationId")
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	private Set<NotificationPAO> notifications;
-	@OneToMany(mappedBy = "blockEntryId")
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	private Set<BlockEntryPAO> blockEntries;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "authId", nullable = true, updatable = false, unique = true)
@@ -77,6 +80,7 @@ public class ClientPAO {
 		eMailAddress = pEMailAddress;
 	}
 
+	@JsonIgnore
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -85,6 +89,7 @@ public class ClientPAO {
 		createdAt = pCreatedAt;
 	}
 
+	@JsonIgnore
 	public Date getBannedAt() {
 		return bannedAt;
 	}
@@ -93,6 +98,7 @@ public class ClientPAO {
 		bannedAt = pBannedAt;
 	}
 
+	@JsonIgnore
 	public Set<AppointmentPAO> getAppointments() {
 		return appointments;
 	}
@@ -101,6 +107,7 @@ public class ClientPAO {
 		appointments = pAppointments;
 	}
 
+	@JsonIgnore
 	public Set<NotificationPAO> getNotifications() {
 		return notifications;
 	}
@@ -109,6 +116,7 @@ public class ClientPAO {
 		notifications = pNotifications;
 	}
 
+	@JsonIgnore
 	public Set<BlockEntryPAO> getBlockEntries() {
 		return blockEntries;
 	}
@@ -117,6 +125,7 @@ public class ClientPAO {
 		blockEntries = pBlockEntries;
 	}
 
+	@JsonIgnore
 	public AuthPAO getAuth() {
 		return auth;
 	}

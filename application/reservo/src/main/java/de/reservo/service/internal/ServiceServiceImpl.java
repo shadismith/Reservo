@@ -60,11 +60,11 @@ public class ServiceServiceImpl implements ServiceService {
 	}
 
 	@Override
-	public void deleteService(Long pLong, EmployeeRole pRole) throws NotAuthorizedException {
+	public void deleteService(Long pServiceId, EmployeeRole pRole) throws NotAuthorizedException {
 		if (pRole == EmployeeRole.EMPLOYEE) {
 			throw new NotAuthorizedException();
 		}
-		serviceDAO.delete(pLong);
+		serviceDAO.delete(pServiceId);
 	}
 
 	@Override

@@ -34,12 +34,15 @@ public class AuthServiceImpl implements AuthService {
 			throw new AuthenticationException("Fehlerhafte Anmeldeinformationen.");
 		}
 		if (authenticationResult.getClient() != null) {
+			if (authenticationResult.getClient().getBannedAt() != null) {
+				throw new AuthenticationException("Das Konto wurde gesperrt.");
+			}
 			return authenticationResult.getClient();
 		}
 		if (authenticationResult.getEmployee() != null) {
 			return authenticationResult.getEmployee();
 		}
-		throw new AuthenticationException("Kein Client oder Employee gefunden.");
+		throw new AuthenticationException("Kein Client oder Employee gefunden."); // Sollte nie passieren
 	}
 
 	@Override

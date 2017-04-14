@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import de.reservo.Util;
 import de.reservo.dao.AuthDAO;
 import de.reservo.dao.ClientDAO;
-import de.reservo.dao.EmployeeDAO;
-import de.reservo.dao.ServiceProviderDAO;
 import de.reservo.enums.EmployeeRole;
 import de.reservo.exception.InvalidInputException;
 import de.reservo.exception.MailOrLoginExistsException;
@@ -25,12 +23,6 @@ public class AuthServiceImpl implements AuthService {
 
 	@Autowired
 	private AuthDAO authDAO;
-
-	@Autowired
-	private ServiceProviderDAO serviceProviderDAO;
-	
-	@Autowired
-	private EmployeeDAO employeeDAO;
 
 	@Autowired
 	ClientDAO clientDAO;

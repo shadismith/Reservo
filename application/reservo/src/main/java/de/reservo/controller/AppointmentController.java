@@ -56,8 +56,8 @@ public class AppointmentController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/client/cancel")
-	public ResponseEntity<Object> cancelClientAppointment(@RequestBody Map<String, Long> pJsonRequest, HttpServletRequest pRequest)
-			throws NotAuthorizedException {
+	public ResponseEntity<Object> cancelClientAppointment(@RequestBody Map<String, Long> pJsonRequest,
+			HttpServletRequest pRequest) throws NotAuthorizedException {
 		appointmentService.cancelClientAppointment(pJsonRequest.get("appointmentId"),
 				((ClientPAO) pRequest.getSession().getAttribute(Util.AUTHENTICATION_OBJECT)).getClientId());
 		return new ResponseEntity<Object>(HttpStatus.OK);
@@ -75,9 +75,11 @@ public class AppointmentController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/serviceprovider/add")
-	public ResponseEntity<Object> addSPAppointment(@RequestBody AppointmentPAO pAppointmentPAO, HttpServletRequest pRequest) {
-		appointmentService.addSPAppointment(pAppointmentPAO, ((EmployeePAO) pRequest.getSession().getAttribute(Util.AUTHENTICATION_OBJECT))
-				.getServiceProvider().getServiceProviderId());
+	public ResponseEntity<Object> addSPAppointment(@RequestBody AppointmentPAO pAppointmentPAO,
+			HttpServletRequest pRequest) {
+		appointmentService.addSPAppointment(pAppointmentPAO,
+				((EmployeePAO) pRequest.getSession().getAttribute(Util.AUTHENTICATION_OBJECT)).getServiceProvider()
+						.getServiceProviderId());
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 
@@ -87,15 +89,25 @@ public class AppointmentController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/serviceprovider/delete")
-	public ResponseEntity<Object> deleteSPAppointment(@RequestBody Map<String, Long> pJsonRequest, HttpServletRequest pRequest) throws NotAuthorizedException {
-		appointmentService.deleteSPAppointment(Long.valueOf(pJsonRequest.get("appointmentId")), ((EmployeePAO) pRequest.getSession().getAttribute(Util.AUTHENTICATION_OBJECT))
-				.getServiceProvider().getServiceProviderId());
+	public ResponseEntity<Object> deleteSPAppointment(@RequestBody Map<String, Long> pJsonRequest,
+			HttpServletRequest pRequest) throws NotAuthorizedException {
+		appointmentService.deleteSPAppointment(Long.valueOf(pJsonRequest.get("appointmentId")),
+				((EmployeePAO) pRequest.getSession().getAttribute(Util.AUTHENTICATION_OBJECT)).getServiceProvider()
+						.getServiceProviderId());
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/serviceprovider/findByClientName")
 	public ResponseEntity<List<AppointmentPAO>> findAppointmentsByClientName(
 			@RequestParam(required = true, name = "name") String pName) {
+		return new ResponseEntity<List<AppointmentPAO>>(HttpStatus.OK);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, path = "/getSPAppointments")
+	public ResponseEntity<List<AppointmentPAO>> getSPAppointments(
+			@RequestParam(required = false, name = "serviceProviderId") Long pServiceProviderId,
+			@RequestParam(required = false, name = "startDate") Date pStartDate,
+			@RequestParam(required = false, name = "endDate") Date pEndDate) {
 		return new ResponseEntity<List<AppointmentPAO>>(HttpStatus.OK);
 	}
 

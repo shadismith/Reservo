@@ -1,6 +1,5 @@
 package de.reservo.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.reservo.pao.AppointmentPAO;
 import de.reservo.pao.ClientPAO;
 import de.reservo.pao.ServiceProviderPAO;
 
@@ -25,12 +23,7 @@ public class ServiceProviderController {
 		return new ResponseEntity<List<ServiceProviderPAO>>(HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, path = "/getAppointments")
-	public ResponseEntity<List<AppointmentPAO>> getSPAppointments(
-			@RequestParam(required = false, name = "startDate") Date pStartDate,
-			@RequestParam(required = false, name = "endDate") Date pEndDate) {
-		return new ResponseEntity<List<AppointmentPAO>>(HttpStatus.OK);
-	}
+
 
 	@RequestMapping(method = RequestMethod.GET, path = "/getSPList")
 	public ResponseEntity<List<ServiceProviderPAO>> getSPList(
